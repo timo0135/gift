@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Catégorie {{ categorie.id }}{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path()}}/{{ css }}/home.css ">
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ base_path()}}/{{ css }}/home.css ">
+
+    <h2 class="title">{{ categorie.libelle }}</h2>
+    <h4 style="margin-left: 1em">
+        trier par prix
+        <a href="{{ url_for('prestationsOneCategorie', {'id': categorie.id}) }}?order=asc"><i class="fas fa-arrow-down"></i></a>
+        <a href="{{ url_for('prestationsOneCategorie', {'id': categorie.id}) }}?order=desc"><i class="fas fa-arrow-up"></i></a>
+    </h4>
+    <div class="prestations">
+        {% for prestation in prestations %}
+            <a href="{{ url_for('prestation') }}?id={{ prestation.id }}" class="prestation">
+                <img src="{{ base_path() }}/{{ img }}/{{ prestation.img }}" alt="{{ prestation.libelle }}">
+                <h3>{{ prestation.libelle }}</h3>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
