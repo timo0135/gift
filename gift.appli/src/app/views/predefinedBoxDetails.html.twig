@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Box {{ box.id }}{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path()}}/{{ css }}/detailsBox.css ">
+{% endblock %}
+{% block js %}
+    <script defer src="{{ base_path()}}/{{ js }}/box.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="box-header">
+        <a href="{{ url_for('GetcreateBox') }}?id={{ box.id }}" ><button class="validate-box">Créer une box à partir de celle-ci</button></a>
+    </div>
+    <div class="box-container">
+        <h2 class="title">{{ box.libelle }}</h2>
+
+
+
+        <div class="prestations">
+            {% for prestation in prestations %}
+                <div class="prestation">
+                    <img src="{{ base_path() }}/{{ img }}/{{ prestation.img }}" alt="{{ prestation.libelle }}" class="prestation-img">
+                    <div class="prestation-details">
+                        <h3 class="prestation-title">{{ prestation.libelle }}</h3>
+                        <div class="prestation-quantity">
+                            <label for="quantity-{{ prestation.id }}">Quantité</label>
+                            <input type="number" id="quantity-{{ prestation.id }}" name="quantity-{{ prestation.id }}" value="{{ prestation.pivot.quantite }}" min="1" data-prestation-id="{{ prestation.id }}" data-box-id="{{ box.id }}" data-prestation-price="{{ prestation.tarif }}"  disabled >
+                        </div>
+                        <span id="price-{{prestation.id}}" class="prestation-price">Prix Total : {{ prestation.pivot.quantite * prestation.tarif }}€</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+    <div class="box-footer">
+        <span id="total-price">Prix Total : {{ box.montant }}€</span>
+    </div>
+{% endblock %}

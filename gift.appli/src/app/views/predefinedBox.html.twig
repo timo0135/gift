@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Mes box{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path() }}/{{ css }}/catalogue.css">
+{% endblock %}
+{% block js %}
+    <script defer src="{{ base_path() }}/{{ js }}/catalogue.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="catalogue-container">
+        <div class="sidebar" id="sidebar">
+            <h2>Catalogue</h2>
+            <ul>
+                <li><a href="{{ url_for('prestations') }}">Prestations</a></li>
+                <li><a href="{{ url_for('categories') }}" >Catégories</a></li>
+                <li><a href="{{ url_for('GetBoxesPredefinies') }}" class="active">Box prédéfinies</a></li>
+            </ul>
+        </div>
+        <div class="catalogue-content" id="catalogue-content">
+            <button class="toggle-btn" id="toggle-btn">☰</button>
+            <div class="haut-page">
+                <h1>Liste des box prédéfinies</h1>
+            </div>
+            <div class="items">
+                {% for box in boxes %}
+                    <a href="{{ url_for('GetBoxesPredefiniesDetails',{ 'id': box.id }) }}" class="item {% if box.id == sessionBox['id'] %}current-box{% endif %}">
+                        {% if box.kdo == 0 %}
+                            <img class="categorie-img" src="{{ base_path() }}/{{ img }}/box.jpg" alt="{{ box.libelle }}">
+                        {% else %}
+                            <img class="categorie-img" src="{{ base_path() }}/{{ img }}/boxCadeau.jpg" alt="{{ box.libelle }}">
+                        {% endif %}
+                        <p class="item-title">{{ box.libelle }}</p>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
