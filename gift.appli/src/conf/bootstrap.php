@@ -19,9 +19,16 @@ $twig->getEnvironment()->addGlobal('css', 'assets/css');
 $twig->getEnvironment()->addGlobal('img', 'assets/img');
 $twig->getEnvironment()->addGlobal('js', 'assets/js');
 
+$sessionMiddleware = function (Request $request, RequestHandler $handler) use ($twig): Response {
+    $twig->getEnvironment()->addGlobal('sessionUser', $_SESSION['user'] ?? null);
+    $twig->getEnvironment()->addGlobal('sessionConfirmation_message', $_SESSION['confirmation_message'] ?? null);
+    $twig->getEnvironment()->addGlobal('sessionBox', $_SESSION['box'] ?? null);
+    return $handler->handle($request);
+};
 
 
 $app->add(TwigMiddleware::create($app, $twig));
+$app->add($sessionMiddleware);
 
 
 

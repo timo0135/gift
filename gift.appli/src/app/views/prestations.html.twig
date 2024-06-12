@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Prestations {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path() }}/{{ css }}/catalogue.css">
+{% endblock %}
+{% block js %}
+    <script defer src="{{ base_path() }}/{{ js }}/catalogue.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="catalogue-container">
+        <div class="sidebar" id="sidebar">
+            <h2>Catalogue</h2>
+            <ul>
+                <li><a href="{{ url_for('prestations') }}" class="active">Prestations</a></li>
+                <li><a href="{{ url_for('categories') }}">Catégories</a></li>
+                <li><a href="{{ url_for('GetBoxesPredefinies') }}">Box prédéfinies</a></li>
+            </ul>
+        </div>
+        <div class="catalogue-content" id="catalogue-content">
+            <button class="toggle-btn" id="toggle-btn">☰</button>
+            <div class="haut-page">
+                <h1>Catalogue</h1>
+                <h4>
+                    trier par prix
+                    <a href="{{ url_for('prestations') }}?order=asc"><i class="fas fa-arrow-down"></i></a>
+                    <a href="{{ url_for('prestations') }}?order=desc"><i class="fas fa-arrow-up"></i></a>
+                </h4>
+            </div>
+
+            <div class="items">
+                {% for prestation in prestations %}
+                    <a href="{{ url_for('prestation') }}?id={{ prestation.id }}" class="item">
+                        <img src="{{ base_path() }}/{{ img }}/{{ prestation.img }}" alt="Photo de {{ prestation.libelle }}" class="item-image">
+                        <p class="item-title">{{ prestation.libelle }}</p>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

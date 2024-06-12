@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path() }}/{{ css }}/catalogue.css">
+{% endblock %}
+{% block js %}
+    <script defer src="{{ base_path() }}/{{ js }}/catalogue.js"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="catalogue-container">
+        <div class="sidebar" id="sidebar">
+            <h2>Catalogue</h2>
+            <ul>
+                <li><a href="{{ url_for('prestations') }}">Prestations</a></li>
+                <li><a href="{{ url_for('categories') }}" class="active">Catégories</a></li>
+                <li><a href="{{ url_for('GetBoxesPredefinies') }}">Box prédéfinies</a></li>
+            </ul>
+        </div>
+        <div class="catalogue-content" id="catalogue-content">
+            <button class="toggle-btn" id="toggle-btn">☰</button>
+            <h1>Liste des catégories</h1>
+            <div class="items">
+                {% for categorie in categories %}
+                    <a href="{{ url_for('prestationsOneCategorie',{ 'id': categorie.id }) }}" class="item">
+                        <img class="categorie-img" src="{{ base_path() }}/{{ img }}/{{ categorie.img }}" alt="{{ categorie.libelle }}">
+                        <p class="item-title">{{ categorie.libelle }}</p>
+                        <p>{{ categorie.description }}</p>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

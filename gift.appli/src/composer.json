@@ -2,13 +2,13 @@
 
   "require" : {
     "php": ">=8.2",
-    "slim/slim": "^4.0",
-    "slim/psr7": "^1.6",
-    "ramsey/uuid": "^4.0",
-    "illuminate/database":"^11.0",
-    "fakerphp/faker":"^1.20",
-    "twig/twig": "^3.0",
-    "slim/twig-view": "^3.3.0"
+    "vendor/slim/slim": "^4.0",
+    "vendor/slim/psr7": "^1.6",
+    "vendor/ramsey/uuid": "^4.0",
+    "vendor/illuminate/database":"^11.0",
+    "vendor/fakerphp/faker":"^1.20",
+    "vendor/twig/twig": "^3.0",
+    "vendor/slim/twig-view": "^3.3.0"
   },
   
   "autoload": {
