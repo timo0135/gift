@@ -14,6 +14,7 @@ use gift\appli\app\actions\GetPrestationsForOneCategorieAction;
 use gift\appli\app\actions\GetCreateBoxAction;
 use gift\appli\app\actions\PostCreateBoxAction;
 
+use gift\appli\app\actions\PostAddPrestionToBoxAction;
 return function(\Slim\App $app): \Slim\App {
 
     $app->get('/categories',GetCategoriesAction::class)->setName('categories');
@@ -31,6 +32,9 @@ return function(\Slim\App $app): \Slim\App {
     $app->get('/box/create', GetCreateBoxAction::class)->setName('GetcreateBox');
 
     $app->post('/box/create', PostCreateBoxAction::class)->setName('PostcreateBox');
+
+    $app->post('/box/add/prestation', PostAddPrestionToBoxAction::class)->setName('PostAddPrestationToBox');
+
 
 
     return $app;
