@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Prestation {{ prestation.id }}{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path() }}/{{ css }}/prestation.css">
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ base_path() }}/{{ css }}/prestation.css">
+
+    {% if sessionConfirmation_message != null %}
+        <div class="flash-message">{{ sessionConfirmation_message }}</div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                setTimeout(function () {
+                    document.querySelector('.flash-message').style.display = 'none';
+                }, 3000);
+            });
+        </script>
+    {% endif %}
+
+    <div class="prestation-container">
+        <img class="prestation-image" src="{{ base_path() }}/{{ img }}/{{ prestation.img }}" alt="Image of {{ prestation.libelle }}">
+        <div class="prestation-details">
+            <h1 class="prestation-title">{{ prestation.libelle }}</h1>
+            <p>{{ prestation.description }}</p>
+            <p><strong>Tarif:</strong> {{ prestation.tarif }} €</p>
+            <p><strong>Unité:</strong> {{ prestation.unite }}</p>
+            <div class="prestation-actions">
+                <form action="{{ url_for('PostAddPrestationToBox') }}" method="post">
+                    <label for="quantity">Quantité:</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1">
+                    <input type="hidden" name="csrf" value="{{ csrf }}">
+                    <input type="hidden" name="prestation_id" value="{{ prestation.id }}">
+                    <button type="submit">Ajouter au panier courant</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
