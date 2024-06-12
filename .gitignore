@@ -31,6 +31,3 @@ __pycache__
 treatments
 package-lock.json
 package.json
-
-docker-compose.yml
-
