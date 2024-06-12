@@ -10,6 +10,8 @@ use gift\appli\app\actions\GetPrestationsForOneCategorieAction;
 
 return function(\Slim\App $app): \Slim\App {
 
+    $app->get('/categories',GetCategoriesAction::class)->setName('categories');
+
     $app->get('/prestations', GetPrestationsAction::class)->setName('prestations');
 
     $app->get('/prestation',GetOnePrestationAction::class)->setName('prestation');
