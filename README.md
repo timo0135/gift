@@ -2,3 +2,15 @@
 BENCHERGUI Timothée DESPAQUIS Liam DIRAND Félicien GEORGES Vincent
 
 Toutes les taches ont été faite avec succès !
+
+Installation du projet : 
+- Récupérer le projet via le dépot git (git clone https://github.com/timo0135/gift.git)
+- Au niveau du fichier docker_compose.yml, créez et lancez les containeurs avec la commande "docker compose up"
+  
+- Se rendre dans le dossier "gift.appli/src" et exécutez la commande "composer install"
+- Se rendre dans le dossier gift.api/src" et exécutez la commande "composer install"
+  
+- Ouvrir phpmyadmin en se rendant sur l'URL "Localhost:8081" dans un navigateur
+- Dans phpmyadmin, se rendre dans la base gift puis importer le fichier sql/gift-structures.sql puis le fichier sql/gift-donnees.sql
+
+Gift et l'API Gift sont prêt à l'emploi ! 
