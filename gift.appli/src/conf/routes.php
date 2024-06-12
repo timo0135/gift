@@ -11,6 +11,9 @@ use gift\appli\app\actions\GetOnePrestationAction;
 
 use gift\appli\app\actions\GetPrestationsForOneCategorieAction;
 
+use gift\appli\app\actions\GetCreateBoxAction;
+use gift\appli\app\actions\PostCreateBoxAction;
+
 return function(\Slim\App $app): \Slim\App {
 
     $app->get('/categories',GetCategoriesAction::class)->setName('categories');
@@ -24,6 +27,11 @@ return function(\Slim\App $app): \Slim\App {
     $app->get('/box/predefinie', GetBoxesPredefiniesAction::class)->setName('GetBoxesPredefinies');
 
     $app->get('/box/predefinie/{id}', GetBoxesPredefiniesDetailsAction::class)->setName('GetBoxesPredefiniesDetails');
+
+    $app->get('/box/create', GetCreateBoxAction::class)->setName('GetcreateBox');
+
+    $app->post('/box/create', PostCreateBoxAction::class)->setName('PostcreateBox');
+
 
     return $app;
 
