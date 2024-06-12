@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Box créée{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path()}}/{{ css }}/actions.css ">
+{% endblock %}
+
+{% block content %}
+    <h1>Box créée</h1>
+    <p>Box créée avec succès</p>
+    <p>Libellé : {{ libelle }}</p>
+    <p>Description : {{ description }}</p>
+    <p>Montant : {{ montant }}</p>
+    <p>Token : {{ token }}</p>
+    <p>KDO : {{ kdo }}</p>
+    <p>Message KDO : {{ message_kdo }}</p>
+    <p>Statut : {{ statut }}</p>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Connection{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path()}}/{{ css }}/formBox.css ">
+{% endblock %}
+{% block js %}
+    <script defer src="{{ base_path()}}/{{ js }}/formBox.js"></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Connection</h1>
+    <form action="{{ url_for('Postsignin') }}" method="post" id="boxForm">
+        <label for="user_id">Email</label>
+        <input type="email" name="user_id" id="user_id">
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password" id="password">
+
+        <input type="submit" value="Se connecter">
+    </form>
+{% endblock %}

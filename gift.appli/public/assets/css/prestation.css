@@ -1,0 +1,87 @@
+.prestation-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    margin: 0 auto; /* Center the container */
+    justify-content: center;
+
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.prestation-image {
+    width: 30em;  /* Increased width */
+    height: 30em; /* Increased height */
+    object-fit: cover;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.prestation-details {
+    flex: 1;
+}
+
+.prestation-title {
+    font-size: 3.5em;  /* Increased font size */
+    margin-bottom: 20px;
+}
+
+.prestation-details p {
+    margin: 15px 0;
+    font-size: 2em;  /* Increased font size */
+}
+
+.prestation-actions {
+    margin-top: 30px;
+}
+
+.prestation-actions label {
+    font-size: 1.5em;  /* Increased font size */
+    margin-right: 10px;
+}
+
+.prestation-actions input[type="number"] {
+    width: 80px;  /* Increased width */
+    padding: 10px;
+    font-size: 1.5em;  /* Increased font size */
+    margin-right: 10px;
+}
+
+.prestation-actions button {
+    padding: 15px 30px;  /* Increased padding */
+    font-size: 1.5em;  /* Increased font size */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.prestation-actions button:hover {
+    background-color: #0056b3;
+}
+.flash-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+

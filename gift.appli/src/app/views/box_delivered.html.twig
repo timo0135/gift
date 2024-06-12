@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Url de la box {{ id }}{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path() }}/{{ css }}/box_print.css">
+{% endblock %}
+
+{% block content %}
+    <div class="box-container">
+        {% if box.kdo == 0 %}
+            <h1>{{ box.libelle }}</h1>
+            <div class="prestations">
+                {% for prestation in prestations %}
+                    <div class="prestation">
+                        <div class="prestation-img-container">
+                            <img src="{{ base_path() }}/{{ img }}/{{ prestation.img }}" alt="{{ prestation.libelle }}" class="prestation-img">
+                        </div>
+                        <div class="prestation-details">
+                            <h3 class="prestation-title">{{ prestation.libelle }}</h3>
+                            <div class="prestation-quantity">
+                                X {{ prestation.pivot.quantite }}
+                            </div>
+                            <span id="price-{{ prestation.id }}" class="prestation-price">Prix Total : {{ prestation.pivot.quantite * prestation.tarif }}€</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="box-footer">
+                <span id="total-price">Prix Total : {{ box.montant }}€</span>
+                <button class="print" onclick="window.print()">Imprimer</button>
+            </div>
+        {% else %}
+            <h1>{{ box.libelle }}</h1>
+            <p>{{ box.message_kdo }}</p>
+            <div class="prestations">
+                {% for prestation in prestations %}
+                    <div class="prestation">
+                        <div class="prestation-img-container">
+                            <img src="{{ base_path() }}/{{ img }}/{{ prestation.img }}" alt="{{ prestation.libelle }}" class="prestation-img">
+                        </div>
+                        <div class="prestation-details">
+                            <h3 class="prestation-title">{{ prestation.libelle }}</h3>
+                            <div class="prestation-quantity">
+                                X {{ prestation.pivot.quantite }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="box-footer">
+                <button class="print" onclick="window.print()">Imprimer</button>
+            </div>
+        {% endif %}
+    </div>
+
+    <style>
+
+    </style>
+{% endblock %}

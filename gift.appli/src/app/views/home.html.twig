@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Home{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path()}}/{{ css }}/home.css">
+{% endblock %}
+
+{% block content %}
+    <h1 id="titre">Bienvenue sur Gift !</h1>
+    <div id="intro-container">
+        <p id="intro">Découvrez une sélection de prestations soigneusement choisies pour répondre à toutes vos envies. Que vous cherchiez des moments de détente, des aventures inoubliables ou des expériences uniques, nous avons quelque chose pour vous. Explorez nos catégories ci-dessous et trouvez le cadeau parfait pour vous-même ou pour vos proches.</p>
+        <img id="intro-img" src="{{ base_path() }}/{{ img }}/photo_home.png" alt="Intro Image">
+    </div>
+    {% for category in categories %}
+        <div class="category">
+            <h2>{{ category.libelle }}</h2>
+            <div class="prestations">
+                {% for prestation in category.prestations %}
+                    <a href="{{ url_for('prestation') }}?id={{ prestation.id }}" class="prestation">
+                        <img src="{{ base_path() }}/{{ img }}/{{ prestation.img }}" alt="{{ prestation.libelle }}">
+                        <h3>{{ prestation.libelle }}</h3>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

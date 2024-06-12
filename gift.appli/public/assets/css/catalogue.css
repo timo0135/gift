@@ -1,0 +1,163 @@
+.catalogue-container {
+    display: flex;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a.active {
+    background-color: #666;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+}
+
+.catalogue-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.catalogue-content.shifted {
+    margin-left: 20%;
+}
+
+header{
+    transition: margin-left 0.3s ease;
+}
+
+nav{
+    transition: margin-left 0.3s ease;
+}
+
+header.shifted {
+    margin-left: 20%;
+}
+
+nav.shifted {
+    margin-left: 20%;
+}
+
+footer{
+    transition: margin-left 0.3s ease;
+}
+
+footer.shifted {
+    margin-left: 20%;
+}
+
+.toggle-btn {
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    border-radius: 20vh;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item {
+    width: 28%;
+    margin: 10px 0;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd; /* Add a border around each item */
+    border-radius: 5px; /* Optional: add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for better distinction */
+    text-decoration: none;
+    color: #333;
+}
+
+.item-image {
+    width: 100%; /* Make the image take the full width of the div */
+    height: 20em; /* Fixed height to maintain aspect ratio */
+    object-fit: cover; /* Ensure images cover the entire area */
+    border-radius: 5px; /* Optional: add rounded corners to images */
+}
+
+.item-title {
+    font-size: 1.5em;
+    margin-top: 1em;
+}
+
+.categorie-img{
+    width: 100%;
+    height: 20em;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.haut-page{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+#creationBox{
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #333;
+}
+
+#creationBox:hover{
+    background-color: #f9f9f9;
+}
+
+#creationBox:active{
+    background-color: #f0f0f0;
+}
+
+.current-box {
+    background-color: #f0f8ff; /* Couleur de fond différente */
+    border: 2px solid #007bff; /* Optionnel : Ajouter une bordure pour plus de visibilité */
+}

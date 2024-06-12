@@ -1,0 +1,73 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Box {{ box.id }}{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path()}}/{{ css }}/prestationsByOneBox.css">
+{% endblock %}
+{% block js %}
+    <script defer src="{{ base_path()}}/{{ js }}/box.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="box-header">
+        <span>État de la box :{% if box.statut == 1 %} CRÉÉE {% elseif box.statut == 2 %} VALIDÉE {% elseif box.statut == 3 %} PAYÉE {% elseif box.statut == 4 %} DÉLIVRÉE {% elseif box.statut == 5 %} UTILISÉE {% endif %} </span>
+        {% if sessionBox['id'] == box.id %}
+            <span>Panier courant</span>
+        {% elseif box.statut == 1 %}
+            <form action="{{ url_for('PostDefineCurrentBox') }}" method="post">
+                <input type="hidden" name="csrf" value="{{ csrf }}">
+                <input type="hidden" name="box_id" value="{{ box.id }}">
+                <button type="submit" class="define-current-cart">Définir comme panier courant</button>
+            </form>
+        {% endif %}
+    </div>
+    <div class="box-container">
+        <h2 class="title">{{ box.libelle }}</h2>
+
+        <div class="prestations">
+            {% for prestation in prestations %}
+                <div class="prestation">
+                    <img src="{{ base_path() }}/{{ img }}/{{ prestation.img }}" alt="{{ prestation.libelle }}" class="prestation-img">
+                    <div class="prestation-details">
+                        <h3 class="prestation-title">{{ prestation.libelle }}</h3>
+                        <div class="prestation-quantity">
+                            <label for="quantity-{{ prestation.id }}">Quantité</label>
+                            <input type="number" id="quantity-{{ prestation.id }}" name="quantity-{{ prestation.id }}" value="{{ prestation.pivot.quantite }}" min="1" data-prestation-id="{{ prestation.id }}" data-box-id="{{ box.id }}" data-prestation-price="{{ prestation.tarif }}" {% if box.statut != 1 %} disabled {% endif %}>
+                        </div>
+                        <div style="display: flex; justify-content: space-between">
+                            <span id="price-{{ prestation.id }}" class="prestation-price">Prix Total : {{ prestation.pivot.quantite * prestation.tarif }}€</span>
+                            <form action="{{ url_for('PostDelPrestationFromBox') }}" method="post">
+                                <input type="hidden" name="csrf" value="{{ csrf }}">
+                                <input type="hidden" name="box_id" value="{{ box.id }}">
+                                <input type="hidden" name="presta_id" value="{{ prestation.id }}">
+                                <button type="submit" class="delete-prestation" {% if box.statut != 1 %} disabled {% endif %}>Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="box-footer">
+        <span id="total-price">Prix Total : {{ box.montant }}€</span>
+        {% if box.statut == 1 %}
+            <form action="{{ url_for('PostValidateBox') }}" method="post">
+                <input type="hidden" name="csrf" value="{{ csrf }}">
+                <input type="hidden" name="box_id" value="{{ box.id }}">
+                <button type="submit" class="validate-box">Valider la Box</button>
+            </form>
+        {% elseif box.statut == 2 %}
+            <form action="{{ url_for('GetPaiement', {'id': box.id}) }}" method="get">
+                <button type="submit" class="validate-box">Payer la Box</button>
+            </form>
+        {% elseif box.statut == 3 %}
+            <form action="{{ url_for('GetDelivery', {'id': box.id}) }}" method="get">
+                <button type="submit" class="validate-box">Délivrer la Box</button>
+            </form>
+        {% elseif box.statut == 4 %}
+            <form action="{{ url_for('GetDelivery', {'id': box.id}) }}" method="get">
+                <button type="submit" class="validate-box">Voir l'URL</button>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

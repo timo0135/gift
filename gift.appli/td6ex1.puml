@@ -1,0 +1,21 @@
+@startuml
+class Box {
+    + id: string
+    + box2presta(): Collection<Prestation>
+}
+
+class Categorie {
+    + id: string
+    + prestations(): Collection<Prestation>
+}
+
+class Prestation {
+    + id: string
+    + categorie(): Categorie
+    + box2presta(): Collection<Box>
+}
+
+Box *--* Prestation
+Categorie --* Prestation
+
+@enduml

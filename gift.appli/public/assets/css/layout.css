@@ -1,0 +1,97 @@
+/* layout.css */
+
+body {
+    display: grid;
+    grid-template-rows: 8em auto 1fr;
+    grid-template-columns: 100%;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fffaf7;
+}
+
+header, nav, footer {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+}
+#logout{
+    color: white;
+    text-decoration: none;
+    padding: 0.5em;
+    border-radius: 1vh;
+    background-color: #333;
+    position: absolute;
+    right: 1%;
+    top: 1%;
+
+}
+
+#logout:hover{
+    background-color: white;
+    color: red;
+}
+
+header {
+    padding-top: 4em;
+    grid-row: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: white;
+    text-align: left;
+    padding: 0.8em;
+    margin-bottom: 0.8em;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+nav {
+    grid-row: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em;
+    border-radius: 1vh;
+}
+
+nav a:hover {
+    background-color: white;
+    color: #333;
+}
+
+main {
+    grid-row: 3;
+}
+
+footer {
+    grid-row: 4;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}

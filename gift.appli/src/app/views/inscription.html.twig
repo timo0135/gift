@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path()}}/{{ css }}/formBox.css ">
+{% endblock %}
+{% block js %}
+    <script defer src="{{ base_path()}}/{{ js }}/formBox.js"></script>
+{% endblock %}
+
+{% block content %}
+
+    <h1>Inscription</h1>
+    <form action="{{ url_for('Postsignup') }}" method="post" id="boxForm">
+        <label for="user_id">Email</label>
+        <input type="email" name="user_id" id="user_id">
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password" id="password">
+        <label for="password2">Confirmer le mot de passe</label>
+        <input type="password" name="password2" id="password2">
+
+        <input type="submit" value="S'inscrire">
+    </form>
+{% endblock %}

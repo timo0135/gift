@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Mes box{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path() }}/{{ css }}/catalogue.css">
+{% endblock %}
+
+{% block content %}
+    <div class="catalogue-container">
+        <div class="catalogue-content" id="catalogue-content">
+            <div class="haut-page">
+                <h1>Liste des box</h1>
+                <a id="creationBox" href="{{ url_for('GetcreateBox') }}">Créer une Box</a>
+            </div>
+            <div class="items">
+                {% for box in boxes %}
+                    <a href="{{ url_for('GetPrestationsByOneBox',{ 'id': box.id }) }}" class="item {% if box.id == sessionBox['id'] %}current-box{% endif %}">
+                        {% if box.kdo == 0 %}
+                            <img class="categorie-img" src="{{ base_path() }}/{{ img }}/box.jpg" alt="{{ box.libelle }}">
+                        {% else %}
+                            <img class="categorie-img" src="{{ base_path() }}/{{ img }}/boxCadeau.jpg" alt="{{ box.libelle }}">
+                        {% endif %}
+                        <p class="item-title">{{ box.libelle }}</p>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Url de la box {{ id }}{% endblock %}
+
+{% block content %}
+    <div class="container box-url">
+        <h2>Url de la box {{ id }}</h2>
+        <div class="input-group">
+            <input type="text" class="form-control" id="boxUrl" value="{{ baseUrl }}{{ url_for('GetBoxDelivered') }}?token={{ token }}" readonly>
+            <button class="copy-btn" type="button" onclick="copyUrl()">Copier l'URL</button>
+        </div>
+        <div id="copyAlert" class="alert" role="alert">
+            L'URL a été copiée !
+        </div>
+    </div>
+
+    <script>
+        function copyUrl() {
+            var copyText = document.getElementById("boxUrl");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+            navigator.clipboard.writeText(copyText.value).then(function() {
+                var alertBox = document.getElementById("copyAlert");
+                alertBox.style.display = 'block';
+                setTimeout(function() {
+                    alertBox.style.display = 'none';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 2em auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-control {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .copy-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+{% endblock %}
