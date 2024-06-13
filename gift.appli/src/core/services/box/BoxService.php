@@ -243,4 +243,15 @@ class BoxService implements BoxServiceInterface
             throw new BoxServiceNotFoundException("La box n'existe pas");
         }
     }
+
+    public function usedBox(string $box_id): void
+    {
+        try {
+            $box = Box::findOrFail($box_id);
+            $box->statut = 5;
+            $box->save();
+        } catch (\Exception $e) {
+            throw new BoxServiceNotFoundException("La box n'existe pas");
+        }
+    }
 }

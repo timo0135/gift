@@ -20,6 +20,7 @@ use gift\appli\app\actions\GetPrestationsByOneBoxAction;
 use gift\appli\app\actions\GetPrestationsAction;
 use gift\appli\app\actions\GetPrestationsForOneCategorieAction;
 use gift\appli\app\actions\PostAddPrestionToBoxAction;
+use gift\appli\app\actions\PostBoxDeliveredAction;
 use gift\appli\app\actions\PostConnectionAction;
 use gift\appli\app\actions\PostCreateBoxAction;
 use gift\appli\app\actions\PostCreateCategorieAction;
@@ -87,6 +88,9 @@ return function( \Slim\App $app): \Slim\App {
     $app->get('/box/delivery/{id}', GetDeliveryAction::class)->setName('GetDelivery');
 
     $app->get('/box/show', GetBoxDeliveredAction::class)->setName('GetBoxDelivered');
+
+    $app->post('/box/show', PostBoxDeliveredAction::class)->setName('PostBoxDelivered');
+
 
 
     return $app;

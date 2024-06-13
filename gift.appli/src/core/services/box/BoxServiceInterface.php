@@ -20,6 +20,7 @@ interface BoxServiceInterface
     public function validateBox(string $box_id): void;
     public function payBox(string $box_id): void;
     public function deliverBox(string $box_id): void;
+    public function usedBox(string $box_id): void;
     public function getTokenbyBox(string $box_id): string;
     public function getBoxByToken(string $token): array;
 }

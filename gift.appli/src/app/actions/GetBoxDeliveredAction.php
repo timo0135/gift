@@ -2,6 +2,7 @@
 
 namespace gift\appli\app\actions;
 
+use gift\appli\app\utils\CsrfService;
 use gift\appli\core\services\box\BoxService;
 use gift\appli\core\services\box\BoxServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -27,13 +28,13 @@ class GetBoxDeliveredAction extends Action
         if ($token === null) {
             throw new HttpNotFoundException($rq, 'Token manquant');
         }
-/*        $token = str_replace(' ', '+', $token);*/
+        /*        $token = str_replace(' ', '+', $token);*/
 
         $box = $this->boxService->getBoxByToken($token);
         $prestation = $this->boxService->getPrestationsFromBox($box['id']);
         if ($box['statut'] == 4){
             $view = Twig::fromRequest($rq);
-            return $view->render($rs, $this->template, ['box' => $box, 'prestations' => $prestation]);
+            return $view->render($rs, $this->template, ['box' => $box, 'prestations' => $prestation, 'csrf' => CsrfService::generate()]);
         }
 
         throw new HttpForbiddenException($rq, 'Vous n\'avez pas les droits pour consulter cette box car elle n\'est pas encore délivrée');
