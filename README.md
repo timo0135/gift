@@ -14,3 +14,5 @@ Installation du projet :
 - Dans phpmyadmin, se rendre dans la base gift puis importer le fichier sql/gift-structures.sql puis le fichier sql/gift-donnees.sql
 
 Gift et l'API Gift sont prêt à l'emploi ! 
+
+Vous pouvez trouver le site à cette URL : http://docketu.iutnc.univ-lorraine.fr:8080
