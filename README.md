@@ -13,6 +13,10 @@ Installation du projet :
 - Ouvrir phpmyadmin en se rendant sur l'URL "Localhost:8081" dans un navigateur
 - Dans phpmyadmin, se rendre dans la base gift puis importer le fichier sql/gift-structures.sql puis le fichier sql/gift-donnees.sql
 
+- Dans "gift.appli/src/conf" créer un fichier "gift.db.conf.ini", remplissez ce fichier avec les informations que l'on vous a donné.
+- Dans "gift.api/src/conf" créer un fichier "gift.db.conf.ini", remplissez ce fichier avec les informations que l'on vous a donné.
+- À la racine du projet créer un fichier ".env" et remplissez la avec les informations que l'on vous a donné.
+
 Gift et l'API Gift sont prêt à l'emploi ! 
 
 Vous pouvez trouver le site à cette URL : http://docketu.iutnc.univ-lorraine.fr:8080
