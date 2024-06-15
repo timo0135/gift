@@ -25,8 +25,7 @@ class PostConnectionAction extends Action
     {
         $data = $rq->getParsedBody();
         $this->authProvider->signin($data['user_id'], $data['password']);
-        if ($this->authProvider->isSignedIn($data['user_id'])){
-            Twig::fromRequest($rq)->getEnvironment()->addGlobal('sessionUser', $_SESSION['user']);
+        if ($this->authProvider->isSignedIn()){
             return $rs->withHeader('Location', '/')->withStatus(302);
         }
         return $rs->withHeader('Location', '/signin')->withStatus(302);

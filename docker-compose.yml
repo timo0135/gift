@@ -3,7 +3,7 @@ version: '3.8'
 services:
   php:
     image: canals/php:latest
-    container_name: php_container
+    container_name: php_container_gift
     volumes:
       - ./gift.appli/public:/var/www/html
       - ./gift.appli/src:/var/www/src
@@ -11,10 +11,11 @@ services:
       - "8080:80"
     networks:
       - app-network
+    restart: unless-stopped
 
   api:
     image: canals/php:latest
-    container_name: api_container
+    container_name: api_container_gift
     volumes:
       - ./gift.api/public:/var/www/html
       - ./gift.api/src:/var/www/src
@@ -23,30 +24,33 @@ services:
       - "8082:80"
     networks:
       - app-network
+    restart: unless-stopped
 
   mysql:
     image: mysql:8.0
-    container_name: mysql_container
+    container_name: mysql_container_gift
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: gift
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
       - app-network
+    restart: unless-stopped
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin_container
+    container_name: phpmyadmin_container_gift
     environment:
-      PMA_HOST: mysql_container
-      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: mysql_container_gift
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
       - "8081:80"
     networks:
       - app-network
+    restart: unless-stopped
 
 networks:
   app-network:
