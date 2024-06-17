@@ -10,7 +10,7 @@ Installation du projet :
 - Se rendre dans le dossier "gift.appli/src" et exécutez la commande "composer install"
 - Se rendre dans le dossier gift.api/src" et exécutez la commande "composer install"
   
-- Ouvrir phpmyadmin en se rendant sur l'URL "Localhost:8081" dans un navigateur
+- Ouvrir phpmyadmin en se rendant sur l'URL "localhost:8081" dans un navigateur
 - Dans phpmyadmin, se rendre dans la base gift puis importer le fichier sql/gift-structures.sql puis le fichier sql/gift-donnees.sql
 
 - Dans "gift.appli/src/conf" créer un fichier "gift.db.conf.ini", remplissez ce fichier avec les informations que l'on vous a donné.
