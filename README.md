@@ -4,7 +4,7 @@ BENCHERGUI Timothée DESPAQUIS Liam DIRAND Félicien GEORGES Vincent
 Toutes les taches ont été faite avec succès !
 
 Installation du projet : 
-- Récupérer le projet via le dépot git (git clone https://github.com/timo0135/gift.git)
+- Récupérer le projet via le dépot git (git clone git@github.com:timo0135/gift.git)
 - À la racine du projet créer un fichier ".env" et remplissez la avec les informations que l'on vous a donné.
 - Au niveau du fichier docker_compose.yml, créez et lancez les containeurs avec la commande "docker compose up"
   
