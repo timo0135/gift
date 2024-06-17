@@ -21,3 +21,4 @@ Installation du projet :
 Gift et l'API Gift sont prêt à l'emploi ! 
 
 Vous pouvez trouver le site à cette URL : http://docketu.iutnc.univ-lorraine.fr:10084
+Vous pouvez trouver l'API à cette URL : http://docketu.iutnc.univ-lorraine.fr:10082
